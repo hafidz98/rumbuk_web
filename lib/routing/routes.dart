@@ -12,6 +12,9 @@ const clientsPageRoute = "/clients";
 const buildingPageName = "Building";
 const buildingPageRoute = "/building";
 
+const roomPageName = "Room";
+const roomPageRoute = "/room";
+
 const authenticationPageName = "Log Out";
 const authenticationPageRoute = "/auth";
 
@@ -27,5 +30,6 @@ List<MenuItem> sideMenuItems = [
   MenuItem(driversPageName, driversPageRoute),
   MenuItem(clientsPageName, clientsPageRoute),
   MenuItem(buildingPageName, buildingPageRoute),
+  MenuItem(roomPageName, roomPageRoute),
   MenuItem(authenticationPageName, authenticationPageRoute),
 ];

@@ -22,6 +22,8 @@ class CustomMenuController extends GetxController{
 
   Widget returnIconFor(String itemName){
     switch(itemName){
+      case roomPageName:
+        return _customIcon(Icons.room, itemName);
       case overViewPageName:
         return _customIcon(Icons.trending_up, itemName);
       case buildingPageName:

@@ -8,7 +8,7 @@ import 'package:provider/single_child_widget.dart';
 import 'package:rumbuk_web/constants/style.dart';
 import 'package:rumbuk_web/controllers/navigation_controller.dart';
 import 'package:rumbuk_web/data/network/client/api_client.dart';
-import 'package:rumbuk_web/data/network/network_mapper.dart';
+import 'package:rumbuk_web/data/network/mapper/network_mapper.dart';
 import 'package:rumbuk_web/data/repository/building_repository.dart';
 import 'package:rumbuk_web/pages/errors/error_page.dart';
 import 'package:rumbuk_web/routing/routes.dart';
