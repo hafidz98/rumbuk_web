@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,36 +16,9 @@ import 'controllers/menu_controller.dart';
 import 'layout.dart';
 import 'pages/authentication/authentication.dart';
 
-// class InitialData {
-//   final List<SingleChildWidget> providers;
-//
-//   InitialData({required this.providers});
-// }
-//
-// Future<InitialData> _createdData() async {
-//
-//   final log = Logger(
-//     printer: PrettyPrinter(),
-//     level: kDebugMode ? Level.trace : Level.off,
-//   );
-//
-//   final apiClient = ApiClient(baseUrl: "http://localhost:8991/v1", apiKey: "", apiHost: "");
-//
-//   final networkMapper = NetworkMapper(log: log);
-//
-//   final buildingRepo = BuildingRepository(apiClient: apiClient, networkMapper: networkMapper);
-//
-//   return InitialData(providers: [
-//     Provider<Logger>.value(value: log),
-//     Provider<BuildingRepository>.value(value: buildingRepo),
-//   ]);
-// }
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
 
-Future<void> main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  //
-  // final data = await _createdData();
-  //
   Get.put(CustomMenuController());
   Get.put(NavigationController());
 
@@ -54,29 +26,56 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  //final InitialData data;
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialRoute: rootRoute,
-      unknownRoute: GetPage(name: "/not-found", page: () => const PageNotFound(), transition: Transition.fadeIn),
+      unknownRoute: GetPage(
+          name: "/not-found",
+          page: () => const PageNotFound(),
+          transition: Transition.fadeIn),
       getPages: [
         GetPage(name: rootRoute, page: () => SiteLayout()),
-        GetPage(name: authenticationPageRoute, page: () => const AuthenticationPage())
+        GetPage(
+            name: authenticationPageRoute,
+            page: () => const AuthenticationPage())
       ],
       debugShowCheckedModeBanner: false,
       title: "Dashboard",
       theme: ThemeData(
           scaffoldBackgroundColor: light,
-          textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme)
-              .apply(bodyColor: Colors.black),
-          pageTransitionsTheme: const PageTransitionsTheme(builders: {
-            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder()
-          }),
-          primaryColor: Colors.blue),
+          textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)
+              .apply(bodyColor: secondaryColor),
+          // pageTransitionsTheme: const PageTransitionsTheme(builders: {
+          //   TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+          //   TargetPlatform.android: FadeUpwardsPageTransitionsBuilder()
+          // }),
+          pageTransitionsTheme: PageTransitionsTheme(
+            // makes all platforms that can run Flutter apps display routes without any animation
+            builders: {
+              for (var k in TargetPlatform.values.toList())
+                k: const _InanimatePageTransitionsBuilder()
+            },
+          ),
+          primaryColor: primaryColor),
     );
   }
 }
+
+class _InanimatePageTransitionsBuilder extends PageTransitionsBuilder {
+  const _InanimatePageTransitionsBuilder();
+
+  @override
+  Widget buildTransitions<T>(
+      PageRoute<T> route,
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child) {
+    return child;
+  }
+}
+
+// https://dexterx.dev/creating-a-responsive-flutter-application-with-a-navigation-drawer/

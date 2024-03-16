@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:logger/logger.dart';
-import 'package:rumbuk_web/constants/strings.dart';
 import 'package:rumbuk_web/data/network/entity/room_entity.dart';
 
 import '../../data/network/mapper/room_entity_mapper.dart';
@@ -16,12 +15,10 @@ class RoomService{
   Future<List<Room>> getRoomList() async {
     final roomList = await _roomRepository.getAllRoom();
 
+    List<RoomEntity> roomEntityList = roomList.data!.map((e) => RoomEntity.fromJson(e as Map<String, dynamic>)).toList();
 
+    log("[Room Data][Repo]: $roomEntityList");
 
-    List<RoomEntity> d = roomList.data!.map((e) => RoomEntity.fromJson(e as Map<String, dynamic>)).toList();
-
-    log("[Room Data][Repo]: $d");
-
-    return _roomEntityMapper.toRoomList(d);
+    return _roomEntityMapper.toRoomList(roomEntityList);
   }
 }

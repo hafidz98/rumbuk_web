@@ -14,7 +14,7 @@ class RoomRepository {
 
   Future<ApiResponseEntity> getAllRoom() async {
     try{
-      final response = await apiDioClient.dio.get(room);
+      final response = await apiDioClient.dio.get(roomApiEndpoint);
 
       if (response.statusCode != null && response.statusCode! >= 400) {
         throw NetworkExcepton(

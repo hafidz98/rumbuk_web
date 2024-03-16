@@ -6,7 +6,8 @@ import 'package:rumbuk_web/widgets/custom_text.dart';
 class AvailableDriversTable extends StatelessWidget {
   final List<DataColumn> dataColumn;
   final List<DataRow> dataRow;
-  const AvailableDriversTable({super.key, required this.dataColumn, required this.dataRow});
+  const AvailableDriversTable(
+      {super.key, required this.dataColumn, required this.dataRow});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +19,13 @@ class AvailableDriversTable extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: lightGrey, width: .5),
-            boxShadow: [BoxShadow(offset: const Offset(0, 4),
-                color: lightGrey.withOpacity(.1),
-                spreadRadius: 2,
-                blurRadius: 8)],
+            boxShadow: [
+              BoxShadow(
+                  offset: const Offset(0, 4),
+                  color: lightGrey.withOpacity(.1),
+                  spreadRadius: 2,
+                  blurRadius: 8)
+            ],
             borderRadius: const BorderRadius.all(Radius.circular(4)),
           ),
           padding: const EdgeInsets.all(8),

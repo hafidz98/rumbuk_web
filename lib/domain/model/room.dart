@@ -8,6 +8,7 @@ class Room with _$Room {
     required int id,
     required String name,
     required int capacity,
+    int? buildingId,
+    int? floorId,
   }) = _Room;
-
 }

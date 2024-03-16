@@ -19,6 +19,8 @@ mixin _$Room {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get capacity => throw _privateConstructorUsedError;
+  int? get buildingId => throw _privateConstructorUsedError;
+  int? get floorId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RoomCopyWith<Room> get copyWith => throw _privateConstructorUsedError;
@@ -29,7 +31,7 @@ abstract class $RoomCopyWith<$Res> {
   factory $RoomCopyWith(Room value, $Res Function(Room) then) =
       _$RoomCopyWithImpl<$Res, Room>;
   @useResult
-  $Res call({int id, String name, int capacity});
+  $Res call({int id, String name, int capacity, int? buildingId, int? floorId});
 }
 
 /// @nodoc
@@ -48,6 +50,8 @@ class _$RoomCopyWithImpl<$Res, $Val extends Room>
     Object? id = null,
     Object? name = null,
     Object? capacity = null,
+    Object? buildingId = freezed,
+    Object? floorId = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -62,6 +66,14 @@ class _$RoomCopyWithImpl<$Res, $Val extends Room>
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
               as int,
+      buildingId: freezed == buildingId
+          ? _value.buildingId
+          : buildingId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      floorId: freezed == floorId
+          ? _value.floorId
+          : floorId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -72,7 +84,7 @@ abstract class _$$_RoomCopyWith<$Res> implements $RoomCopyWith<$Res> {
       __$$_RoomCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, int capacity});
+  $Res call({int id, String name, int capacity, int? buildingId, int? floorId});
 }
 
 /// @nodoc
@@ -87,6 +99,8 @@ class __$$_RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res, _$_Room>
     Object? id = null,
     Object? name = null,
     Object? capacity = null,
+    Object? buildingId = freezed,
+    Object? floorId = freezed,
   }) {
     return _then(_$_Room(
       id: null == id
@@ -101,6 +115,14 @@ class __$$_RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res, _$_Room>
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
               as int,
+      buildingId: freezed == buildingId
+          ? _value.buildingId
+          : buildingId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      floorId: freezed == floorId
+          ? _value.floorId
+          : floorId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -108,7 +130,12 @@ class __$$_RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res, _$_Room>
 /// @nodoc
 
 class _$_Room implements _Room {
-  const _$_Room({required this.id, required this.name, required this.capacity});
+  const _$_Room(
+      {required this.id,
+      required this.name,
+      required this.capacity,
+      this.buildingId,
+      this.floorId});
 
   @override
   final int id;
@@ -116,10 +143,14 @@ class _$_Room implements _Room {
   final String name;
   @override
   final int capacity;
+  @override
+  final int? buildingId;
+  @override
+  final int? floorId;
 
   @override
   String toString() {
-    return 'Room(id: $id, name: $name, capacity: $capacity)';
+    return 'Room(id: $id, name: $name, capacity: $capacity, buildingId: $buildingId, floorId: $floorId)';
   }
 
   @override
@@ -130,11 +161,15 @@ class _$_Room implements _Room {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.capacity, capacity) ||
-                other.capacity == capacity));
+                other.capacity == capacity) &&
+            (identical(other.buildingId, buildingId) ||
+                other.buildingId == buildingId) &&
+            (identical(other.floorId, floorId) || other.floorId == floorId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, capacity);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, capacity, buildingId, floorId);
 
   @JsonKey(ignore: true)
   @override
@@ -147,7 +182,9 @@ abstract class _Room implements Room {
   const factory _Room(
       {required final int id,
       required final String name,
-      required final int capacity}) = _$_Room;
+      required final int capacity,
+      final int? buildingId,
+      final int? floorId}) = _$_Room;
 
   @override
   int get id;
@@ -155,6 +192,10 @@ abstract class _Room implements Room {
   String get name;
   @override
   int get capacity;
+  @override
+  int? get buildingId;
+  @override
+  int? get floorId;
   @override
   @JsonKey(ignore: true)
   _$$_RoomCopyWith<_$_Room> get copyWith => throw _privateConstructorUsedError;

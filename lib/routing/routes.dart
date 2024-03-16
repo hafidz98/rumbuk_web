@@ -27,9 +27,6 @@ class MenuItem {
 
 List<MenuItem> sideMenuItems = [
   MenuItem(overViewPageName, overViewPageRoute),
-  MenuItem(driversPageName, driversPageRoute),
-  MenuItem(clientsPageName, clientsPageRoute),
   MenuItem(buildingPageName, buildingPageRoute),
   MenuItem(roomPageName, roomPageRoute),
-  MenuItem(authenticationPageName, authenticationPageRoute),
 ];

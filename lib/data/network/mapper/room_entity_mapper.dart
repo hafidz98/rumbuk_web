@@ -15,6 +15,8 @@ class RoomEntityMapper {
         id: entity.id,
         name: entity.name,
         capacity: entity.capacity,
+        buildingId: entity.buildingId,
+        floorId: entity.floorId,
       );
     } catch (e) {
       throw MapperException<RoomEntity, Room>(e.toString());

@@ -124,3 +124,12 @@ class _RoomEditFormState extends State<RoomEditForm> {
     super.initState();
   }
 }
+
+/*
+  TODO: add more field
+  TODO: update new data to API
+  TODO: move text editing controller to controller
+ */
+
+// https://stackoverflow.com/questions/69862806/flutter-getx-pass-data-to-another-page
+// https://stackoverflow.com/questions/57904993/get-data-from-json-and-put-them-in-textfields

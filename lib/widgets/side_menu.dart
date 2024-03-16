@@ -23,14 +23,10 @@ class SideMenu extends StatelessWidget {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const SizedBox(
-                  height: 40,
-                ),
+                const SizedBox(height: 40),
                 Row(
                   children: [
-                    SizedBox(
-                      width: width / 48,
-                    ),
+                    SizedBox(width: width / 48),
                     Padding(
                       padding: const EdgeInsets.only(right: 12),
                       child: Image.asset(
@@ -40,19 +36,17 @@ class SideMenu extends StatelessWidget {
                     ),
                     Flexible(
                         child: CustomText(
-                      text: "Dash",
+                      text: "Rumbuk Dashboard",
                       size: 20,
                       weight: FontWeight.bold,
                       color: active,
                     )),
-                    SizedBox(
-                      width: width / 48,
-                    ),
+                    SizedBox(width: width / 48),
                   ],
                 ),
               ],
             ),
-          Divider(color: lightGrey.withOpacity(.1)),
+          Divider(color: lightGrey.withOpacity(.4)),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: sideMenuItems
