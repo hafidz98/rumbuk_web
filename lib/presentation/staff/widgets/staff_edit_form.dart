@@ -3,28 +3,27 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rumbuk_web/presentation/room/controller/room_controller.dart';
+import 'package:rumbuk_web/constants/style.dart';
+import 'package:rumbuk_web/widgets/custom_text.dart';
 
-import '../../../constants/style.dart';
-import '../../../widgets/custom_text.dart';
-
-class RoomEditForm extends StatefulWidget {
-  const RoomEditForm({Key? key}) : super(key: key);
+class StaffEditForm extends StatefulWidget {
+  const StaffEditForm({Key? key}) : super(key: key);
 
   @override
-  State<RoomEditForm> createState() => _RoomEditFormState();
+  State<StaffEditForm> createState() => _StaffEditFormState();
 }
 
-class _RoomEditFormState extends State<RoomEditForm> {
+class _StaffEditFormState extends State<StaffEditForm> {
   final _formKey = GlobalKey<FormState>();
   final controller = Get.find<RoomController>();
   final _buildingNameController = TextEditingController();
 
   String? Function(String?)? get validator => (value) {
-    if (value == null || value.isEmpty) {
-      return 'Tolong masukkan nama ruangan';
-    }
-    return null;
-  };
+        if (value == null || value.isEmpty) {
+          return 'Tolong masukkan jam';
+        }
+        return null;
+      };
 
   @override
   void dispose() {
@@ -34,10 +33,9 @@ class _RoomEditFormState extends State<RoomEditForm> {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.only(right: 8, left: 8,bottom: 8),
+      padding: const EdgeInsets.only(right: 8, left: 8, bottom: 8),
       width: 550,
       color: Colors.white,
       child: Form(
@@ -49,8 +47,8 @@ class _RoomEditFormState extends State<RoomEditForm> {
             Padding(
               padding: const EdgeInsets.only(bottom: 16),
               child: CustomText(
-                text: "Ubah Ruangan",
-                color: active.withOpacity(.7),
+                text: "Ubah Jam",
+                color: active.withValues(alpha: .7),
                 weight: FontWeight.bold,
               ),
             ),
@@ -95,10 +93,7 @@ class _RoomEditFormState extends State<RoomEditForm> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
-                      // If the form is valid, display a snack bar. In the real world,
-                      // you'd often call a server or save the information in a database.
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Processing Data')),
                       );
@@ -124,12 +119,3 @@ class _RoomEditFormState extends State<RoomEditForm> {
     super.initState();
   }
 }
-
-/*
-  TODO: add more field
-  TODO: update new data to API
-  TODO: move text editing controller to controller
- */
-
-// https://stackoverflow.com/questions/69862806/flutter-getx-pass-data-to-another-page
-// https://stackoverflow.com/questions/57904993/get-data-from-json-and-put-them-in-textfields
