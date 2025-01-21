@@ -13,10 +13,7 @@ class LargeScreen extends StatelessWidget {
         const Expanded(child: SideMenu()),
         Expanded(
           flex: 5,
-          child: Container(
-            padding: const EdgeInsets.all(0),
-            child: localNavigator(),
-          ),
+          child: localNavigator(),
         )
       ],
     );

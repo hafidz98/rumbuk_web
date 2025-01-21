@@ -26,7 +26,7 @@ class _BuildingTableState extends State<BuildingTable> {
     DataColumn2(label: Text("No"), size: ColumnSize.S, fixedWidth: 38),
     DataColumn2(label: Text("ID"), size: ColumnSize.S),
     DataColumn2(label: Text("Name"), size: ColumnSize.L),
-    DataColumn2(label: Text(""), size: ColumnSize.S,fixedWidth: 38),
+    DataColumn2(label: Text("Aksi"), size: ColumnSize.S,fixedWidth: 38),
   ];
 
   List<DataRow> dataTable() {
@@ -39,6 +39,7 @@ class _BuildingTableState extends State<BuildingTable> {
           DataCell(CustomText(text: data[index].name)),
           DataCell(
             IconButton(
+              tooltip: 'Edit',
                 icon: const Icon(Icons.edit_outlined),
                 padding: EdgeInsets.zero,
                 iconSize: 18,
@@ -58,7 +59,7 @@ class _BuildingTableState extends State<BuildingTable> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      endDrawer: Drawer(
+      endDrawer: const Drawer(
         elevation: 16,
         child: FormFieldTable(),
       ),
@@ -96,12 +97,12 @@ class _BuildingTableState extends State<BuildingTable> {
   void initState() {
     super.initState();
     _getData();
-    log("data ${controller.buildingList.length}");
+    //log("data ${controller.buildingList.length}");
   }
 
   Future _getData() async {
-    controller.fetchBuildingData();
-    return data = controller.buildingList;
+    // controller.fetchBuildingData();
+    // return data = controller.buildingList;
   }
 }
 

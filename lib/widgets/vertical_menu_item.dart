@@ -9,8 +9,7 @@ class VerticalMenuItem extends StatelessWidget {
   final String itemName;
   final Function()? onTap;
 
-  const VerticalMenuItem(
-      {Key? key, required this.itemName, this.onTap})
+  const VerticalMenuItem({Key? key, required this.itemName, this.onTap})
       : super(key: key);
 
   @override
@@ -25,7 +24,7 @@ class VerticalMenuItem extends StatelessWidget {
       child: Obx(
         () => Container(
           color: menuController.isHovering(itemName)
-              ? lightGrey.withOpacity(.1)
+              ? lightGrey.withValues(alpha: 0.1)
               : Colors.transparent,
           child: Row(
             children: [
@@ -38,30 +37,32 @@ class VerticalMenuItem extends StatelessWidget {
                 child: Container(width: 3, height: 72, color: Colors.white),
               ),
               Expanded(
-                  child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: menuController.returnIconFor(itemName),
-                  ),
-                  if (!menuController.isActive(itemName))
-                    Flexible(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: menuController.returnIconFor(itemName),
+                    ),
+                    if (!menuController.isActive(itemName))
+                      Flexible(
+                          child: CustomText(
+                              text: itemName,
+                              color: menuController.isHovering(itemName)
+                                  ? Colors.blue
+                                  : Colors.grey))
+                    else
+                      Flexible(
                         child: CustomText(
-                            text: itemName,
-                            color: menuController.isHovering(itemName)
-                                ? Colors.white
-                                : lightGrey))
-                  else
-                    Flexible(
-                        child: CustomText(
-                      text: itemName,
-                      color: dark,
-                      size: 18,
-                      weight: FontWeight.bold,
-                    ))
-                ],
-              ))
+                          text: itemName,
+                          color: dark,
+                          size: 18,
+                          weight: FontWeight.bold,
+                        ),
+                      )
+                  ],
+                ),
+              )
             ],
           ),
         ),

@@ -28,6 +28,16 @@ class CustomMenuController extends GetxController {
         return _customIcon(Icons.trending_up, itemName);
       case buildingPageName:
         return _customIcon(Icons.business_rounded, itemName);
+      case floorPageName:
+        return _customIcon(Icons.layers_rounded, itemName);
+      case roomTimePageName:
+        return _customIcon(Icons.access_time_filled, itemName);
+      case timeSlotPageName:
+        return _customIcon(Icons.more_time_rounded, itemName);
+      case staffPageName:
+        return _customIcon(Icons.group, itemName);
+      case reservationPageName:
+        return _customIcon(Icons.book_rounded, itemName);
       case authenticationPageName:
         return _customIcon(Icons.exit_to_app, itemName);
       default:
@@ -44,6 +54,6 @@ class CustomMenuController extends GetxController {
       );
     }
 
-    return Icon(icon, color: isHovering(itemName) ? dark : lightGrey);
+    return Icon(icon, color: isHovering(itemName) ? dark : dark.withValues(alpha: 0.7));
   }
 }

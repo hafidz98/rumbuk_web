@@ -10,6 +10,7 @@ import 'package:rumbuk_web/data/network/client/api_client.dart';
 import 'package:rumbuk_web/data/network/mapper/network_mapper.dart';
 import 'package:rumbuk_web/data/repository/building_repository.dart';
 import 'package:rumbuk_web/pages/errors/error_page.dart';
+import 'package:rumbuk_web/presentation/building/controller/building_controller.dart';
 import 'package:rumbuk_web/routing/routes.dart';
 
 import 'controllers/menu_controller.dart';
@@ -21,6 +22,8 @@ void main() {
 
   Get.put(CustomMenuController());
   Get.put(NavigationController());
+
+  Get.lazyPut(() => BuildingController());
 
   runApp(const MyApp());
 }
@@ -45,7 +48,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Dashboard",
       theme: ThemeData(
-          scaffoldBackgroundColor: light,
+          scaffoldBackgroundColor: lightGrey,
           textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)
               .apply(bodyColor: secondaryColor),
           // pageTransitionsTheme: const PageTransitionsTheme(builders: {

@@ -20,7 +20,6 @@ class OverViewPage extends StatelessWidget {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-
   final _row = List<DataRow>.generate(
     20,
     (index) => DataRow(
@@ -56,76 +55,87 @@ class OverViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      endDrawer: Drawer(
+      endDrawer: const Drawer(
         elevation: 16,
         child: FormFieldTable(),
       ),
       body: Column(
         children: [
-          Obx(() => Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                        top: ResponsiveWidget.isSmallScreen(context) ? 56 : 6),
-                    child: CustomText(
-                      text: menuController.activeItem.value,
-                      size: 24,
-                      weight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              )),
-          Expanded(
-            child: ListView(
+          Obx(
+            () => Row(
               children: [
-                if (ResponsiveWidget.isLargeScreen(context) ||
-                    ResponsiveWidget.isMediumScreen(context))
-                  if (ResponsiveWidget.isCustomScreen(context))
-                    const OverviewCardMediumScreen()
-                  else
-                    const OverviewCardLargeScreen()
-                else
-                  const OverviewCardSmallScreen(),
-                if (!ResponsiveWidget.isSmallScreen(context))
-                  const RevenueSectionLarge()
-                else
-                  const RevenueSectionSmall(),
-                //AvailableDrivers()
-
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomText(
-                        text: "Table Label",
-                        color: active.withOpacity(.7),
-                        weight: FontWeight.bold,
-                      ),
-                    ),
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        _scaffoldKey.currentState!.openEndDrawer();
-                      },
-                      label: const Text("New Data"),
-                      icon: const Icon(
-                        Icons.add,
-                        size: 24,
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(60.0, 40.0),
-                      ),
-                    )
-                  ],
+                Container(
+                  margin: EdgeInsets.only(
+                      top: ResponsiveWidget.isSmallScreen(context) ? 56 : 6),
+                  child: CustomText(
+                    text: menuController.activeItem.value,
+                    size: 24,
+                    weight: FontWeight.bold,
+                  ),
                 ),
-                const SizedBox(
-                  height: 18,
-                ),
-                AvailableDriversTable(
-                  dataColumn: _columns,
-                  dataRow: _row,
-                )
               ],
             ),
-          )
+          ),
+          const Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Center(child: Text('Selamat datang')),
+            ],
+          )),
+          // Expanded(
+          //   child: ListView(
+          //     children: const [
+          //       Text('Selamat datang')
+          //       // if (ResponsiveWidget.isLargeScreen(context) ||
+          //       //     ResponsiveWidget.isMediumScreen(context))
+          //       //   if (ResponsiveWidget.isCustomScreen(context))
+          //       //     const OverviewCardMediumScreen()
+          //       //   else
+          //       //     const OverviewCardLargeScreen()
+          //       // else
+          //       //   const OverviewCardSmallScreen(),
+          //       // if (!ResponsiveWidget.isSmallScreen(context))
+          //       //   const RevenueSectionLarge()
+          //       // else
+          //       //   const RevenueSectionSmall(),
+          //       //AvailableDrivers()
+          //
+          //       // Row(
+          //       //   children: [
+          //       //     Expanded(
+          //       //       child: CustomText(
+          //       //         text: "Table Label",
+          //       //         color: active.withOpacity(.7),
+          //       //         weight: FontWeight.bold,
+          //       //       ),
+          //       //     ),
+          //       //     ElevatedButton.icon(
+          //       //       onPressed: () {
+          //       //         _scaffoldKey.currentState!.openEndDrawer();
+          //       //       },
+          //       //       label: const Text("New Data"),
+          //       //       icon: const Icon(
+          //       //         Icons.add,
+          //       //         size: 24,
+          //       //       ),
+          //       //       style: ElevatedButton.styleFrom(
+          //       //         minimumSize: const Size(60.0, 40.0),
+          //       //       ),
+          //       //     )
+          //       //   ],
+          //       // ),
+          //       // const SizedBox(
+          //       //   height: 18,
+          //       // ),
+          //       // AvailableDriversTable(
+          //       //   dataColumn: _columns,
+          //       //   dataRow: _row,
+          //       // )
+          //     ],
+          //   ),
+          // )
         ],
       ),
     );

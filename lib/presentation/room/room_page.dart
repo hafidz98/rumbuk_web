@@ -19,14 +19,14 @@ class RoomPage extends StatefulWidget {
     DataColumn2(label: Text("ID"), size: ColumnSize.S),
     DataColumn2(label: Text("Nama"), size: ColumnSize.L),
     DataColumn2(label: Text("Kapasitas"), size: ColumnSize.L),
-    DataColumn2(label: Text("Aksi"), fixedWidth: 40),
+    DataColumn2(label: Text("Aksi")),
   ];
 }
 
 class _RoomPageState extends State<RoomPage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-
   final _controller = Get.put(RoomController());
+  late bool _switchValue = true;
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +39,13 @@ class _RoomPageState extends State<RoomPage> {
         children: [
           Obx(
             () => Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
                   child: CustomText(
                     text: menuController.activeItem.value,
-                    size: 24,
+                    size: 18,
                     weight: FontWeight.bold,
                   ),
                 ),
@@ -55,7 +56,7 @@ class _RoomPageState extends State<RoomPage> {
                       _scaffoldKey.currentState!.openEndDrawer();
                     }
                   },
-                  label: const Text("New Data"),
+                  label: const Text("Ruangan Baru"),
                   icon: const Icon(
                     Icons.add,
                     size: 24,
@@ -67,23 +68,22 @@ class _RoomPageState extends State<RoomPage> {
               ],
             ),
           ),
-          const SizedBox(
-            height: 16,
-          ),
+          const SizedBox(height: 16),
           Expanded(
             child: Obx(
               () => Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(color: lightGrey, width: .5),
-                  boxShadow: const [
-                    BoxShadow(
-                        offset: Offset(0, 4),
-                        color: Colors.black,//lightGrey.withOpacity(.1),
-                        spreadRadius: 2,
-                        blurRadius: 8)
-                  ],
-                  borderRadius: const BorderRadius.all(Radius.circular(4)),
+                  // boxShadow: const [
+                  //   BoxShadow(
+                  //     offset: Offset(0, 2),
+                  //     color: Colors.grey, //lightGrey.withOpacity(.1),
+                  //     spreadRadius: 0.1,
+                  //     blurRadius: 4,
+                  //   )
+                  // ],
+                  borderRadius: const BorderRadius.all(Radius.circular(2)),
                 ),
                 padding: const EdgeInsets.all(8),
                 margin: const EdgeInsets.only(bottom: 30),
@@ -92,7 +92,7 @@ class _RoomPageState extends State<RoomPage> {
                   child: DataTable2(
                       fixedTopRows: 1,
                       columnSpacing: 6,
-                      dataRowHeight: 56,
+                      dataRowHeight: 48,
                       headingRowHeight: 40,
                       horizontalMargin: 12,
                       minWidth: 600,
@@ -120,21 +120,69 @@ class _RoomPageState extends State<RoomPage> {
                 DataCell(CustomText(
                     text: _controller.roomList[index].capacity.toString())),
                 DataCell(
-                  IconButton(
-                      icon: const Icon(Icons.edit_outlined),
-                      padding: EdgeInsets.zero,
-                      iconSize: 18,
-                      splashRadius: 18,
-                      onPressed: () {
-                        setState(() {
-                          _controller.roomData = _controller.roomList[index];
-                          log("[Rom:Room][roomData]: $_controller.roomList[index]");
-                          _controller.drawerIndex.value = 1;
-                        });
-                        if (_controller.drawerIndex.value == 1) {
-                          _scaffoldKey.currentState!.openEndDrawer();
-                        }
-                      }),
+                  Row(
+                    children: [
+                      IconButton(
+                          tooltip: 'Edit',
+                          icon: const Icon(Icons.edit_outlined),
+                          padding: EdgeInsets.zero,
+                          iconSize: 18,
+                          splashRadius: 18,
+                          onPressed: () {
+                            setState(() {
+                              _controller.roomData =
+                                  _controller.roomList[index];
+                              log("[Rom:Room][roomData]: $_controller.roomList[index]");
+                              _controller.drawerIndex.value = 1;
+                            });
+                            if (_controller.drawerIndex.value == 1) {
+                              _scaffoldKey.currentState!.openEndDrawer();
+                            }
+                          }),
+                      IconButton(
+                          tooltip: 'Delete',
+                          icon: const Icon(Icons.delete_forever),
+                          padding: EdgeInsets.zero,
+                          iconSize: 18,
+                          splashRadius: 18,
+                          onPressed: () {
+                            SnackBar snackBar = SnackBar(
+                              content: const Text('To be Implemented'),
+                              behavior: SnackBarBehavior.floating,
+                              showCloseIcon: true,
+                              duration: const Duration(seconds: 2),
+                              //width: 320,
+                              margin: EdgeInsets.only(
+                                  bottom: 10,
+                                  right: 10,
+                                  left:
+                                      MediaQuery.of(context).size.width * 0.7),
+                            );
+                            setState(() {
+                              // _controller.roomData = _controller.roomList[index];
+                              // log("[Rom:Room][roomData]: $_controller.roomList[index]");
+                              // _controller.drawerIndex.value = 1;
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            });
+                            // if (_controller.drawerIndex.value == 1) {
+                            //   _scaffoldKey.currentState!.openEndDrawer();
+                            // }
+                          }),
+                      const SizedBox(width: 5),
+                      const Text('Aktif:'),
+                      Transform.scale(
+                        scale: 0.5,
+                        child: Switch(
+                          value: _switchValue,
+                          activeColor: Colors.green,
+                          onChanged: (value) {
+                            setState(() {_switchValue = value;});
+                          },
+                        ),
+                      )
+                    ],
+                  ),
                   //ElevatedButton(onPressed: (){}, child: Text("Edit"))
                 ),
               ],

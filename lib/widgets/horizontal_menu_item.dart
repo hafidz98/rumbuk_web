@@ -9,8 +9,7 @@ class HorizontalMenuItem extends StatelessWidget {
   final String itemName;
   final Function()? onTap;
 
-  const HorizontalMenuItem(
-      {Key? key, required this.itemName, this.onTap})
+  const HorizontalMenuItem({Key? key, required this.itemName, this.onTap})
       : super(key: key);
 
   @override
@@ -26,7 +25,7 @@ class HorizontalMenuItem extends StatelessWidget {
       child: Obx(
         () => Container(
           color: menuController.isHovering(itemName)
-              ? lightGrey.withOpacity(.1)
+              ? dark.withValues(alpha: 0.1)
               : Colors.transparent,
           child: Row(
             children: [
@@ -36,30 +35,35 @@ class HorizontalMenuItem extends StatelessWidget {
                 maintainSize: true,
                 maintainState: true,
                 maintainAnimation: true,
-                child: Container(width: 6, height: 40, color: dark,),
+                child: Container(
+                  width: 5,
+                  height: 40,
+                  color: dark,
+                ),
               ),
-              SizedBox(
-                width: width / 80,
-              ),
+              SizedBox(width: width / 80),
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: menuController.returnIconFor(itemName),
               ),
               if (!menuController.isActive(itemName))
                 Flexible(
-                    child: CustomText(
-                        text: itemName,
-                        color: menuController.isHovering(itemName)
-                            ? dark
-                            : lightGrey))
+                  child: CustomText(
+                    text: itemName,
+                    color: menuController.isHovering(itemName)
+                        ? dark
+                        : dark.withValues(alpha: 0.7),
+                  ),
+                )
               else
                 Flexible(
-                    child: CustomText(
-                  text: itemName,
-                  color: dark,
-                  size: 18,
-                  weight: FontWeight.bold,
-                ))
+                  child: CustomText(
+                    text: itemName,
+                    color: dark,
+                    size: 18,
+                    weight: FontWeight.bold,
+                  ),
+                )
             ],
           ),
         ),

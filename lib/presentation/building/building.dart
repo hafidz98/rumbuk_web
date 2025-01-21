@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:rumbuk_web/constants/controllers.dart';
 import 'package:rumbuk_web/helpers/responsiveness.dart';
 import 'package:rumbuk_web/presentation/building/building_table.dart';
+// import 'package:rumbuk_web/presentation/building/building_table.dart';
+import 'package:rumbuk_web/presentation/building/widgets/building_table_view.dart';
 import 'package:rumbuk_web/widgets/custom_text.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +17,7 @@ class BuildingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      endDrawer: Drawer(
+      endDrawer: const Drawer(
         elevation: 16,
         child: FormFieldTable(),
       ),

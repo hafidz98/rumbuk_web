@@ -3,9 +3,9 @@ import 'package:rumbuk_web/constants/style.dart';
 import 'package:rumbuk_web/helpers/responsiveness.dart';
 import 'package:rumbuk_web/widgets/side_menu_item.dart';
 import 'package:get/get.dart';
-import '../constants/controllers.dart';
+import 'package:rumbuk_web/constants/controllers.dart';
 import '../pages/authentication/authentication.dart';
-import '../routing/routes.dart';
+import 'package:rumbuk_web/routing/routes.dart';
 import 'custom_text.dart';
 
 class SideMenu extends StatelessWidget {
@@ -16,7 +16,16 @@ class SideMenu extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     return Container(
-      color: light,
+      decoration: BoxDecoration(
+        color: light,
+        border: Border(
+          right: BorderSide(
+            color: dark.withValues(alpha: 0.1),
+            width: 1.5
+          )
+        )
+      ),
+      //color: light,
       child: ListView(
         children: [
           if (ResponsiveWidget.isSmallScreen(context))
@@ -46,7 +55,7 @@ class SideMenu extends StatelessWidget {
                 ),
               ],
             ),
-          Divider(color: lightGrey.withOpacity(.4)),
+          //Divider(color: lightGrey),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: sideMenuItems

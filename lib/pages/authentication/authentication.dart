@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rumbuk_web/constants/style.dart';
-import 'package:rumbuk_web/layout.dart';
 import 'package:rumbuk_web/routing/routes.dart';
 import 'package:rumbuk_web/widgets/custom_text.dart';
 
@@ -14,22 +13,22 @@ class AuthenticationPage extends StatelessWidget {
     return Scaffold(
       body: Center(
           child: Container(
-        constraints: BoxConstraints(maxWidth: 400),
-        padding: EdgeInsets.all(24),
+        constraints: const BoxConstraints(maxWidth: 400),
+        padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(right: 12),
-                  child: Container(child: Image.asset("assets/icons/icon1.png"), height: 24,),
+                  padding: const EdgeInsets.only(right: 12),
+                  child: SizedBox(height: 24,child: Image.asset("assets/icons/icon1.png"),),
                 ),
                 Expanded(child: Container())
               ],
             ),
-            SizedBox(
-              height: 30,
+            const SizedBox(
+              height: 30
             ),
             Row(
               children: [
@@ -78,7 +77,7 @@ class AuthenticationPage extends StatelessWidget {
                 Row(
                   children: [
                     Checkbox(value: true, onChanged: (value) {value = false;}),
-                    CustomText(text: "Remember me")
+                    const CustomText(text: "Remember me")
                   ],
                 ),
                 CustomText(
@@ -99,8 +98,8 @@ class AuthenticationPage extends StatelessWidget {
                     BoxDecoration(borderRadius: BorderRadius.circular(20), color: active),
                 alignment: Alignment.center,
                 width: double.maxFinite,
-                padding: EdgeInsets.symmetric(vertical: 16),
-                child: CustomText(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: const CustomText(
                   text: "Login",
                   color: Colors.white,
                 ),
@@ -111,7 +110,7 @@ class AuthenticationPage extends StatelessWidget {
             ),
             RichText(
                 text: TextSpan(children: [
-              TextSpan(text: "Do not have admin credentials? "),
+              const TextSpan(text: "Do not have admin credentials? "),
               TextSpan(
                   text: "Request credentials!",
                   style: TextStyle(color: active)),
