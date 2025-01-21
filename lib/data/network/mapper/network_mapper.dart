@@ -3,10 +3,10 @@ import 'package:rumbuk_web/data/network/entity/building_entity.dart';
 import 'package:rumbuk_web/domain/exception/mapper_exception.dart';
 import 'package:rumbuk_web/domain/model/building.dart';
 
-class NetworkMapper {
+class BuildingEntityMapper {
   final Logger log;
 
-  NetworkMapper({required this.log});
+  BuildingEntityMapper({required this.log});
 
   Building toBuilding(BuildingEntity entity) {
     try {

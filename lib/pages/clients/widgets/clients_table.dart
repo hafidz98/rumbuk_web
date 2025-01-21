@@ -11,8 +11,8 @@ class ClientsTable extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: active.withOpacity(.4), width: .5),
-        boxShadow: [BoxShadow(offset: const Offset(0, 6), color: lightGrey.withOpacity(.1), blurRadius: 12)],
+        border: Border.all(color: active.withValues(alpha: 0.4), width: .5),
+        boxShadow: [BoxShadow(offset: const Offset(0, 6), color: lightGrey.withValues(alpha: 0.1), blurRadius: 12)],
         borderRadius: BorderRadius.circular(8),
       ),
       padding: const EdgeInsets.all(16),
@@ -66,7 +66,7 @@ class ClientsTable extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     child: CustomText(
                       text: "Block Client",
-                      color: active.withOpacity(.7),
+                      color: active..withValues(alpha: 0.7),
                       weight: FontWeight.bold,
                     ),
                   ),

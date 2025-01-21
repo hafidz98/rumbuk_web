@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rumbuk_web/widgets/custom_appbar.dart';
 import 'package:rumbuk_web/widgets/side_menu.dart';
 import 'package:rumbuk_web/widgets/top_nav.dart';
 import 'helpers/responsiveness.dart';
@@ -15,10 +16,10 @@ class SiteLayout extends StatelessWidget {
     return Scaffold(
         key: scaffoldKey,
         extendBodyBehindAppBar: false,
-        appBar: topNavigationBar(context, scaffoldKey),
-        drawer: const Drawer(
-          child: SideMenu(),
-        ),
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(AppBar().preferredSize.height),
+            child: CustomAppBar(scaffoldKey: scaffoldKey)),
+        drawer: const Drawer(child: SideMenu()),
         body: const ResponsiveWidget(
           largeScreen: LargeScreen(),
           smallScreen: SmallScreen(),
