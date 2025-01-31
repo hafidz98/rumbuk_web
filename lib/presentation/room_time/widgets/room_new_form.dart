@@ -80,19 +80,19 @@ class _RoomNewFormState extends State<RoomNewForm> {
                 weight: FontWeight.normal,
               ),
             ),
-            CustomDropdownButton2(
-              hint: const Text("Pilih Gedung"),
-              dropdownItems: _controller.getBuildingDropdownMenuItem(),
-              onChanged: (value) =>
-                  setState(() => _controller.buildingData = value),
-            ),
-            const SizedBox(height: 16),
-            CustomDropdownButton2(
-              hint: const Text("Pilih Lantai"),
-              dropdownItems: _controller.getBuildingDropdownMenuItem(),
-              onChanged: (value) =>
-                  setState(() => _controller.buildingData = value),
-            ),
+            // CustomDropdownButton2(
+            //   hint: const Text("Pilih Gedung"),
+            //   dropdownItems: _controller.getBuildingDropdownMenuItem(),
+            //   onChanged: (value) =>
+            //       setState(() => _controller.buildingData = value),
+            // ),
+            // const SizedBox(height: 16),
+            // CustomDropdownButton2(
+            //   hint: const Text("Pilih Lantai"),
+            //   dropdownItems: _controller.getBuildingDropdownMenuItem(),
+            //   onChanged: (value) =>
+            //       setState(() => _controller.buildingData = value),
+            // ),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

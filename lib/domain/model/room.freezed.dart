@@ -12,7 +12,7 @@ part of 'room.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Room {
@@ -21,8 +21,11 @@ mixin _$Room {
   int get capacity => throw _privateConstructorUsedError;
   int? get buildingId => throw _privateConstructorUsedError;
   int? get floorId => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Room
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RoomCopyWith<Room> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -31,7 +34,13 @@ abstract class $RoomCopyWith<$Res> {
   factory $RoomCopyWith(Room value, $Res Function(Room) then) =
       _$RoomCopyWithImpl<$Res, Room>;
   @useResult
-  $Res call({int id, String name, int capacity, int? buildingId, int? floorId});
+  $Res call(
+      {int id,
+      String name,
+      int capacity,
+      int? buildingId,
+      int? floorId,
+      String? status});
 }
 
 /// @nodoc
@@ -44,6 +53,8 @@ class _$RoomCopyWithImpl<$Res, $Val extends Room>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Room
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -52,6 +63,7 @@ class _$RoomCopyWithImpl<$Res, $Val extends Room>
     Object? capacity = null,
     Object? buildingId = freezed,
     Object? floorId = freezed,
+    Object? status = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -74,25 +86,39 @@ class _$RoomCopyWithImpl<$Res, $Val extends Room>
           ? _value.floorId
           : floorId // ignore: cast_nullable_to_non_nullable
               as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_RoomCopyWith<$Res> implements $RoomCopyWith<$Res> {
-  factory _$$_RoomCopyWith(_$_Room value, $Res Function(_$_Room) then) =
-      __$$_RoomCopyWithImpl<$Res>;
+abstract class _$$RoomImplCopyWith<$Res> implements $RoomCopyWith<$Res> {
+  factory _$$RoomImplCopyWith(
+          _$RoomImpl value, $Res Function(_$RoomImpl) then) =
+      __$$RoomImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, int capacity, int? buildingId, int? floorId});
+  $Res call(
+      {int id,
+      String name,
+      int capacity,
+      int? buildingId,
+      int? floorId,
+      String? status});
 }
 
 /// @nodoc
-class __$$_RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res, _$_Room>
-    implements _$$_RoomCopyWith<$Res> {
-  __$$_RoomCopyWithImpl(_$_Room _value, $Res Function(_$_Room) _then)
+class __$$RoomImplCopyWithImpl<$Res>
+    extends _$RoomCopyWithImpl<$Res, _$RoomImpl>
+    implements _$$RoomImplCopyWith<$Res> {
+  __$$RoomImplCopyWithImpl(_$RoomImpl _value, $Res Function(_$RoomImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Room
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,8 +127,9 @@ class __$$_RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res, _$_Room>
     Object? capacity = null,
     Object? buildingId = freezed,
     Object? floorId = freezed,
+    Object? status = freezed,
   }) {
-    return _then(_$_Room(
+    return _then(_$RoomImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -123,19 +150,24 @@ class __$$_RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res, _$_Room>
           ? _value.floorId
           : floorId // ignore: cast_nullable_to_non_nullable
               as int?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Room implements _Room {
-  const _$_Room(
+class _$RoomImpl implements _Room {
+  const _$RoomImpl(
       {required this.id,
       required this.name,
       required this.capacity,
       this.buildingId,
-      this.floorId});
+      this.floorId,
+      this.status});
 
   @override
   final int id;
@@ -147,35 +179,40 @@ class _$_Room implements _Room {
   final int? buildingId;
   @override
   final int? floorId;
+  @override
+  final String? status;
 
   @override
   String toString() {
-    return 'Room(id: $id, name: $name, capacity: $capacity, buildingId: $buildingId, floorId: $floorId)';
+    return 'Room(id: $id, name: $name, capacity: $capacity, buildingId: $buildingId, floorId: $floorId, status: $status)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Room &&
+            other is _$RoomImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.capacity, capacity) ||
                 other.capacity == capacity) &&
             (identical(other.buildingId, buildingId) ||
                 other.buildingId == buildingId) &&
-            (identical(other.floorId, floorId) || other.floorId == floorId));
+            (identical(other.floorId, floorId) || other.floorId == floorId) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, name, capacity, buildingId, floorId);
+      Object.hash(runtimeType, id, name, capacity, buildingId, floorId, status);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Room
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RoomCopyWith<_$_Room> get copyWith =>
-      __$$_RoomCopyWithImpl<_$_Room>(this, _$identity);
+  _$$RoomImplCopyWith<_$RoomImpl> get copyWith =>
+      __$$RoomImplCopyWithImpl<_$RoomImpl>(this, _$identity);
 }
 
 abstract class _Room implements Room {
@@ -184,7 +221,8 @@ abstract class _Room implements Room {
       required final String name,
       required final int capacity,
       final int? buildingId,
-      final int? floorId}) = _$_Room;
+      final int? floorId,
+      final String? status}) = _$RoomImpl;
 
   @override
   int get id;
@@ -197,6 +235,12 @@ abstract class _Room implements Room {
   @override
   int? get floorId;
   @override
-  @JsonKey(ignore: true)
-  _$$_RoomCopyWith<_$_Room> get copyWith => throw _privateConstructorUsedError;
+  String? get status;
+
+  /// Create a copy of Room
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RoomImplCopyWith<_$RoomImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -1,12 +1,12 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rumbuk_web/presentation/room/controller/room_controller.dart';
-
-import '../../../constants/style.dart';
-import '../../../widgets/custom_dropdownmenu2.dart';
-import '../../../widgets/custom_text.dart';
+import 'package:rumbuk_web/constants/style.dart';
+import 'package:rumbuk_web/widgets/custom_dropdownmenu2.dart';
+// import 'package:rumbuk_web/widgets/custom_dropdownmenu2.dart';
+import 'package:rumbuk_web/widgets/custom_text.dart';
+import 'package:rumbuk_web/widgets/sidebars/custom_snackbar.dart';
 
 class RoomNewForm extends StatefulWidget {
   const RoomNewForm({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class _RoomNewFormState extends State<RoomNewForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
       width: 550,
       color: Colors.white,
       child: Form(
@@ -35,7 +35,7 @@ class _RoomNewFormState extends State<RoomNewForm> {
               padding: const EdgeInsets.only(bottom: 8),
               child: CustomText(
                 text: "Tambah Ruangan Baru",
-                color: active.withOpacity(.7),
+                color: active.withValues(alpha: .7),
                 weight: FontWeight.bold,
               ),
             ),
@@ -76,23 +76,43 @@ class _RoomNewFormState extends State<RoomNewForm> {
               padding: const EdgeInsets.only(bottom: 16),
               child: CustomText(
                 text: "Lokasi Ruangan",
-                color: active.withOpacity(.7),
+                color: active.withValues(alpha: .7),
                 weight: FontWeight.normal,
               ),
             ),
             CustomDropdownButton2(
-              hint: const Text("Pilih Gedung"),
-              dropdownItems: _controller.getBuildingDropdownMenuItem(),
-              onChanged: (value) =>
-                  setState(() => _controller.buildingData = value),
+              hint: const Text("Pilih Gedung dan Lantai"),
+              dropdownItems: _controller.floorList
+                  .map(
+                    (element) => DropdownMenuItem(
+                        value: element,
+                        child:
+                            Text("${element.buildingName}, ${element.name}")),
+                  )
+                  .toList(),
+              onChanged: _controller.floorList.isEmpty
+                  ? null
+                  : (value) {
+                      setState(() => _controller.floorDataChosen = value);
+                    },
             ),
-            const SizedBox(height: 16),
-            CustomDropdownButton2(
-              hint: const Text("Pilih Lantai"),
-              dropdownItems: _controller.getBuildingDropdownMenuItem(),
-              onChanged: (value) =>
-                  setState(() => _controller.buildingData = value),
-            ),
+            // const SizedBox(height: 16),
+            // CustomDropdownButton2(
+            //   hint: const Text("Pilih Lantai"),
+            //   dropdownItems: _controller.floorList
+            //       .map(
+            //         (element) => DropdownMenuItem(
+            //           value: element,
+            //           child: Text(element.name),
+            //         ),
+            //       )
+            //       .toList(),
+            //   onChanged: _controller.floorList.isEmpty
+            //       ? null
+            //       : (value) {
+            //           setState(() => _controller.floorDataChosen = value);
+            //         },
+            // ),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -110,17 +130,19 @@ class _RoomNewFormState extends State<RoomNewForm> {
                 ),
                 const SizedBox(width: 8),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
                       // If the form is valid, display a snack bar. In the real world,
                       // you'd often call a server or save the information in a database.
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Menyimpan')),
-                      );
-                      Scaffold.of(context).closeEndDrawer();
+                      var res = await _controller.addNewRoom();
                       _controller.refresh();
-                      log("Building name: ${_controller.roomNameController.text}");
+                      CustomSnackBar.of(context).customSnackBar('Tersimpan');
+                      Scaffold.of(context).closeEndDrawer();
+                      log("Room name: ${_controller.roomNameController.text}");
+                      log("Room cap: ${_controller.roomCapacityController.text}");
+                      log("Building name: ${_controller.floorDataChosen!.buildingName}, ${_controller.floorDataChosen!.buildingId}");
+                      log("Floor name: ${_controller.floorDataChosen!.name}, ${_controller.floorDataChosen!.id}");
                     }
                   },
                   style: ElevatedButton.styleFrom(

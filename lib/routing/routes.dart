@@ -48,5 +48,5 @@ List<MenuItem> sideMenuItems = [
   MenuItem(buildingPageName, buildingPageRoute),
   MenuItem(timeSlotPageName, timeSlotPageRoute),
   MenuItem(roomTimePageName, roomTimePageRoute),
-  MenuItem(staffPageName, timeSlotPageRoute),
+  MenuItem(staffPageName, staffPageRoute),
 ];

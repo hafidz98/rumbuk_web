@@ -36,6 +36,7 @@ class Floor {
     return Floor(
       id: json['id'],
       name: json['name'],
+      buildingId: json['building_id'],
       buildingName: json['building_name'],
     );
   }

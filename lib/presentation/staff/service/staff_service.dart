@@ -28,7 +28,7 @@ class StaffService {
         );
       }
 
-      var data = ApiResponse.fromJson(response.data);
+      var data = ApiResponse.fromJson(jsonDecode(response.data));
 
       return data.data;
     } on DioException catch (e) {

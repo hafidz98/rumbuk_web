@@ -38,7 +38,7 @@ class FloorController extends GetxController {
       print('data Building: $data');
     }
 
-    var res = await _floorService.createBuilding(data);
+    var res = await _floorService.createFloor(data);
     return res;
   }
 

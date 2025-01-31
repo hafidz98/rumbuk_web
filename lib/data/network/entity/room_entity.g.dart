@@ -7,13 +7,18 @@ part of 'room_entity.dart';
 // **************************************************************************
 
 RoomEntity _$RoomEntityFromJson(Map<String, dynamic> json) => RoomEntity(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      capacity: json['capacity'] as int,
-      buildingId: json['building_id'] as int?,
-      floorId: json['floor_id'] as int?,
-      createdAt: DateTime.parse(json['created_at'] as String),
-      updatedAt: DateTime.parse(json['updated_at'] as String),
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String?,
+      capacity: (json['capacity'] as num?)?.toInt(),
+      buildingId: (json['building_id'] as num?)?.toInt(),
+      floorId: (json['floor_id'] as num?)?.toInt(),
+      status: json['status'] as String?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
     );
 
 Map<String, dynamic> _$RoomEntityToJson(RoomEntity instance) =>
@@ -23,6 +28,7 @@ Map<String, dynamic> _$RoomEntityToJson(RoomEntity instance) =>
       'capacity': instance.capacity,
       'building_id': instance.buildingId,
       'floor_id': instance.floorId,
-      'created_at': instance.createdAt.toIso8601String(),
-      'updated_at': instance.updatedAt.toIso8601String(),
+      'status': instance.status,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
     };

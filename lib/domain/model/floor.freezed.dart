@@ -12,7 +12,7 @@ part of 'floor.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Floor {
@@ -20,7 +20,9 @@ mixin _$Floor {
   String get name => throw _privateConstructorUsedError;
   int get buildingId => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Floor
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FloorCopyWith<Floor> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -42,6 +44,8 @@ class _$FloorCopyWithImpl<$Res, $Val extends Floor>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Floor
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -67,20 +71,25 @@ class _$FloorCopyWithImpl<$Res, $Val extends Floor>
 }
 
 /// @nodoc
-abstract class _$$_FloorCopyWith<$Res> implements $FloorCopyWith<$Res> {
-  factory _$$_FloorCopyWith(_$_Floor value, $Res Function(_$_Floor) then) =
-      __$$_FloorCopyWithImpl<$Res>;
+abstract class _$$FloorImplCopyWith<$Res> implements $FloorCopyWith<$Res> {
+  factory _$$FloorImplCopyWith(
+          _$FloorImpl value, $Res Function(_$FloorImpl) then) =
+      __$$FloorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String name, int buildingId});
 }
 
 /// @nodoc
-class __$$_FloorCopyWithImpl<$Res> extends _$FloorCopyWithImpl<$Res, _$_Floor>
-    implements _$$_FloorCopyWith<$Res> {
-  __$$_FloorCopyWithImpl(_$_Floor _value, $Res Function(_$_Floor) _then)
+class __$$FloorImplCopyWithImpl<$Res>
+    extends _$FloorCopyWithImpl<$Res, _$FloorImpl>
+    implements _$$FloorImplCopyWith<$Res> {
+  __$$FloorImplCopyWithImpl(
+      _$FloorImpl _value, $Res Function(_$FloorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Floor
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -88,7 +97,7 @@ class __$$_FloorCopyWithImpl<$Res> extends _$FloorCopyWithImpl<$Res, _$_Floor>
     Object? name = null,
     Object? buildingId = null,
   }) {
-    return _then(_$_Floor(
+    return _then(_$FloorImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -107,8 +116,8 @@ class __$$_FloorCopyWithImpl<$Res> extends _$FloorCopyWithImpl<$Res, _$_Floor>
 
 /// @nodoc
 
-class _$_Floor implements _Floor {
-  const _$_Floor(
+class _$FloorImpl implements _Floor {
+  const _$FloorImpl(
       {required this.id, required this.name, required this.buildingId});
 
   @override
@@ -124,10 +133,10 @@ class _$_Floor implements _Floor {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Floor &&
+            other is _$FloorImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.buildingId, buildingId) ||
@@ -137,18 +146,20 @@ class _$_Floor implements _Floor {
   @override
   int get hashCode => Object.hash(runtimeType, id, name, buildingId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Floor
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FloorCopyWith<_$_Floor> get copyWith =>
-      __$$_FloorCopyWithImpl<_$_Floor>(this, _$identity);
+  _$$FloorImplCopyWith<_$FloorImpl> get copyWith =>
+      __$$FloorImplCopyWithImpl<_$FloorImpl>(this, _$identity);
 }
 
 abstract class _Floor implements Floor {
   const factory _Floor(
       {required final int id,
       required final String name,
-      required final int buildingId}) = _$_Floor;
+      required final int buildingId}) = _$FloorImpl;
 
   @override
   int get id;
@@ -156,8 +167,11 @@ abstract class _Floor implements Floor {
   String get name;
   @override
   int get buildingId;
+
+  /// Create a copy of Floor
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_FloorCopyWith<_$_Floor> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FloorImplCopyWith<_$FloorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

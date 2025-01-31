@@ -25,7 +25,7 @@ class CustomMenuController extends GetxController {
       case roomPageName:
         return _customIcon(Icons.room, itemName);
       case overViewPageName:
-        return _customIcon(Icons.trending_up, itemName);
+        return _customIcon(Icons.home_filled, itemName);
       case buildingPageName:
         return _customIcon(Icons.business_rounded, itemName);
       case floorPageName:

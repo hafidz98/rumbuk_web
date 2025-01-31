@@ -8,7 +8,7 @@ part of 'building_entity.dart';
 
 BuildingResponse _$BuildingResponseFromJson(Map<String, dynamic> json) =>
     BuildingResponse(
-      code: json['code'] as int,
+      code: (json['code'] as num).toInt(),
       status: json['status'] as String,
       data: (json['data'] as List<dynamic>)
           .map((e) => BuildingEntity.fromJson(e as Map<String, dynamic>))
@@ -24,7 +24,7 @@ Map<String, dynamic> _$BuildingResponseToJson(BuildingResponse instance) =>
 
 BuildingEntity _$BuildingEntityFromJson(Map<String, dynamic> json) =>
     BuildingEntity(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       createdAt: json['created_at'] == null
           ? null

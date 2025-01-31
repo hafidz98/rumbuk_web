@@ -8,7 +8,7 @@ part of 'api_response_entity.dart';
 
 ApiResponseEntity _$ApiResponseEntityFromJson(Map<String, dynamic> json) =>
     ApiResponseEntity(
-      code: json['code'] as int?,
+      code: (json['code'] as num?)?.toInt(),
       status: json['status'] as String?,
       data: json['data'] as List<dynamic>?,
     );

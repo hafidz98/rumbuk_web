@@ -12,7 +12,7 @@ part of 'time_slot.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TimeSlot {
@@ -21,7 +21,9 @@ mixin _$TimeSlot {
   DateTime get endTime => throw _privateConstructorUsedError;
   int get duration => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TimeSlot
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TimeSlotCopyWith<TimeSlot> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$TimeSlotCopyWithImpl<$Res, $Val extends TimeSlot>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TimeSlot
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -74,23 +78,26 @@ class _$TimeSlotCopyWithImpl<$Res, $Val extends TimeSlot>
 }
 
 /// @nodoc
-abstract class _$$_TimeSlotCopyWith<$Res> implements $TimeSlotCopyWith<$Res> {
-  factory _$$_TimeSlotCopyWith(
-          _$_TimeSlot value, $Res Function(_$_TimeSlot) then) =
-      __$$_TimeSlotCopyWithImpl<$Res>;
+abstract class _$$TimeSlotImplCopyWith<$Res>
+    implements $TimeSlotCopyWith<$Res> {
+  factory _$$TimeSlotImplCopyWith(
+          _$TimeSlotImpl value, $Res Function(_$TimeSlotImpl) then) =
+      __$$TimeSlotImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, DateTime startTime, DateTime endTime, int duration});
 }
 
 /// @nodoc
-class __$$_TimeSlotCopyWithImpl<$Res>
-    extends _$TimeSlotCopyWithImpl<$Res, _$_TimeSlot>
-    implements _$$_TimeSlotCopyWith<$Res> {
-  __$$_TimeSlotCopyWithImpl(
-      _$_TimeSlot _value, $Res Function(_$_TimeSlot) _then)
+class __$$TimeSlotImplCopyWithImpl<$Res>
+    extends _$TimeSlotCopyWithImpl<$Res, _$TimeSlotImpl>
+    implements _$$TimeSlotImplCopyWith<$Res> {
+  __$$TimeSlotImplCopyWithImpl(
+      _$TimeSlotImpl _value, $Res Function(_$TimeSlotImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TimeSlot
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,7 +106,7 @@ class __$$_TimeSlotCopyWithImpl<$Res>
     Object? endTime = null,
     Object? duration = null,
   }) {
-    return _then(_$_TimeSlot(
+    return _then(_$TimeSlotImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -122,8 +129,8 @@ class __$$_TimeSlotCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TimeSlot implements _TimeSlot {
-  const _$_TimeSlot(
+class _$TimeSlotImpl implements _TimeSlot {
+  const _$TimeSlotImpl(
       {required this.id,
       required this.startTime,
       required this.endTime,
@@ -144,10 +151,10 @@ class _$_TimeSlot implements _TimeSlot {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TimeSlot &&
+            other is _$TimeSlotImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.startTime, startTime) ||
                 other.startTime == startTime) &&
@@ -160,11 +167,13 @@ class _$_TimeSlot implements _TimeSlot {
   int get hashCode =>
       Object.hash(runtimeType, id, startTime, endTime, duration);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TimeSlot
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TimeSlotCopyWith<_$_TimeSlot> get copyWith =>
-      __$$_TimeSlotCopyWithImpl<_$_TimeSlot>(this, _$identity);
+  _$$TimeSlotImplCopyWith<_$TimeSlotImpl> get copyWith =>
+      __$$TimeSlotImplCopyWithImpl<_$TimeSlotImpl>(this, _$identity);
 }
 
 abstract class _TimeSlot implements TimeSlot {
@@ -172,7 +181,7 @@ abstract class _TimeSlot implements TimeSlot {
       {required final int id,
       required final DateTime startTime,
       required final DateTime endTime,
-      required final int duration}) = _$_TimeSlot;
+      required final int duration}) = _$TimeSlotImpl;
 
   @override
   int get id;
@@ -182,8 +191,11 @@ abstract class _TimeSlot implements TimeSlot {
   DateTime get endTime;
   @override
   int get duration;
+
+  /// Create a copy of TimeSlot
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_TimeSlotCopyWith<_$_TimeSlot> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TimeSlotImplCopyWith<_$TimeSlotImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

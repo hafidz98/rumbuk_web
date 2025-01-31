@@ -24,7 +24,11 @@ class FloorService{
         );
       }
 
-      var data = ApiResponse.fromJson(response.data);
+      if (kDebugMode) {
+        print(response.data);
+      }
+
+      var data = ApiResponse.fromJson(jsonDecode(response.data));
 
       return data.data;
     } on DioException catch (e) {
@@ -32,7 +36,7 @@ class FloorService{
     }
   }
 
-  Future createBuilding(Floor floor) async {
+  Future createFloor(Floor floor) async {
     try {
       var reqData = jsonEncode(Floor.toJson(floor));
       if (kDebugMode) {

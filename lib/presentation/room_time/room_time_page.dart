@@ -4,6 +4,7 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rumbuk_web/presentation/room/controller/room_controller.dart';
+import 'package:rumbuk_web/widgets/sidebars/custom_snackbar.dart';
 
 import '../../constants/controllers.dart';
 import '../../constants/style.dart';
@@ -34,74 +35,76 @@ class _RoomTimePageState extends State<RoomTimePage> {
       endDrawer: Drawer(
         child: _controller.getDrawer(),
       ),
-      body: Column(
-        children: [
-          Obx(
-            () => Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: CustomText(
-                    text: menuController.activeItem.value,
-                    size: 18,
-                    weight: FontWeight.bold,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Obx(
+              () => Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: CustomText(
+                      text: menuController.activeItem.value,
+                      size: 18,
+                      weight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                ElevatedButton.icon(
-                  onPressed: () {
-                    setState(() => _controller.drawerIndex.value = 0);
-                    if (_controller.drawerIndex.value == 0) {
-                      _scaffoldKey.currentState!.openEndDrawer();
-                    }
-                  },
-                  label: const Text("Ruangan Baru"),
-                  icon: const Icon(
-                    Icons.add,
-                    size: 24,
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(60.0, 40.0),
-                  ),
-                )
-              ],
+                  FilledButton.icon(
+                    onPressed: () {
+                      setState(() => _controller.drawerIndex.value = 0);
+                      if (_controller.drawerIndex.value == 0) {
+                        _scaffoldKey.currentState!.openEndDrawer();
+                      }
+                    },
+                    label: const Text("Ruangan Baru"),
+                    icon: const Icon(
+                      Icons.add,
+                      size: 24,
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(60.0, 40.0),
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 16),
-          Expanded(
-            child: Obx(
-              () => Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: lightGrey, width: .5),
-                  // boxShadow: const [
-                  //   BoxShadow(
-                  //     offset: Offset(0, 2),
-                  //     color: Colors.grey, //lightGrey.withOpacity(.1),
-                  //     spreadRadius: 0.1,
-                  //     blurRadius: 4,
-                  //   )
-                  // ],
-                  borderRadius: const BorderRadius.all(Radius.circular(2)),
-                ),
-                padding: const EdgeInsets.all(8),
-                margin: const EdgeInsets.only(bottom: 30),
-                child: SizedBox(
-                  height: (56 * 7) + 40,
-                  child: DataTable2(
-                      fixedTopRows: 1,
-                      columnSpacing: 6,
-                      dataRowHeight: 48,
-                      headingRowHeight: 40,
-                      horizontalMargin: 12,
-                      minWidth: 600,
-                      columns: RoomTimePage._columns,
-                      rows: _dataTable()),
+            const SizedBox(height: 16),
+            Expanded(
+              child: Obx(
+                () => Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: lightGrey, width: .5),
+                    // boxShadow: const [
+                    //   BoxShadow(
+                    //     offset: Offset(0, 2),
+                    //     color: Colors.grey, //lightGrey.withOpacity(.1),
+                    //     spreadRadius: 0.1,
+                    //     blurRadius: 4,
+                    //   )
+                    // ],
+                    borderRadius: const BorderRadius.all(Radius.circular(2)),
+                  ),
+                  padding: const EdgeInsets.all(8),
+                  child: SizedBox(
+                    height: (56 * 7) + 40,
+                    child: DataTable2(
+                        fixedTopRows: 1,
+                        columnSpacing: 6,
+                        dataRowHeight: 48,
+                        headingRowHeight: 40,
+                        horizontalMargin: 12,
+                        minWidth: 600,
+                        columns: RoomTimePage._columns,
+                        rows: _dataTable()),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -144,24 +147,12 @@ class _RoomTimePageState extends State<RoomTimePage> {
                           iconSize: 18,
                           splashRadius: 18,
                           onPressed: () {
-                             SnackBar snackBar = SnackBar(
-                              content: const Text('To be Implemented'),
-                              behavior: SnackBarBehavior.floating,
-                              showCloseIcon: true,
-                              duration: const Duration(seconds: 2),
-                              //width: 320,
-                              margin: EdgeInsets.only(
-                                  bottom: 10,
-                                  right: 10,
-                                  left: MediaQuery.of(context).size.width * 0.7),
-                            );
+
                             setState(() {
                               // _controller.roomData = _controller.roomList[index];
                               // log("[Rom:Room][roomData]: $_controller.roomList[index]");
                               // _controller.drawerIndex.value = 1;
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                snackBar
-                              );
+                              CustomSnackBar.of(context).customSnackBar('Akan di implementasi');
                             });
                             // if (_controller.drawerIndex.value == 1) {
                             //   _scaffoldKey.currentState!.openEndDrawer();
