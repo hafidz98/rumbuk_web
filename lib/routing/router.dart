@@ -20,17 +20,17 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case overViewPageRoute:
       return _getPageRoute(OverViewPage());
     case buildingPageRoute:
-      return _getPageRoute(Building2Page());
+      return _getPageRoute(const Building2Page());
     case timeSlotPageRoute:
       return _getPageRoute(const TimeSlotPage());
     case roomTimePageRoute:
-      return _getPageRoute(RoomTimePage());
+      return _getPageRoute(const RoomTimePage());
     case floorPageRoute:
-      return _getPageRoute(FloorPage());
+      return _getPageRoute(const FloorPage());
     case reservationPageRoute:
-      return _getPageRoute(ReservationPage());
+      return _getPageRoute(const ReservationPage());
     case staffPageRoute:
-      return _getPageRoute(StaffPage());
+      return _getPageRoute(const StaffPage());
     // case driversPageRoute:
     //   return _getPageRoute(const DriversPage());
     // case clientsPageRoute:
