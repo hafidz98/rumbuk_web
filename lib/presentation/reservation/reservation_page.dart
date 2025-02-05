@@ -26,6 +26,8 @@ class ReservationPage extends StatefulWidget {
     DataColumn2(label: Text("Tanggal"), size: ColumnSize.M),
     DataColumn2(label: Text("Ruangan"), size: ColumnSize.L),
     DataColumn2(label: Text("Aktivitas"), size: ColumnSize.L),
+    DataColumn2(label: Text("Jam Mulai"), size: ColumnSize.S),
+    DataColumn2(label: Text("Jam Selesai"), size: ColumnSize.S),
     DataColumn2(label: Text("Status"), size: ColumnSize.S),
     DataColumn2(
       label: Text("Aksi"),
@@ -45,6 +47,7 @@ class _ReservationPageState extends State<ReservationPage> {
     return Scaffold(
       key: _scaffoldKey,
       endDrawer: Drawer(
+        shape: const LinearBorder(),
         child: _controller.getDrawer(),
       ),
       body: Padding(
@@ -93,9 +96,9 @@ class _ReservationPageState extends State<ReservationPage> {
                     height: (56 * 7) + 40,
                     child: DataTable2(
                       fixedLeftColumns: 1,
-                      empty: const Text('No data'),
+                      empty: const Center(child: Text('No data')),
                       columnSpacing: 6,
-                      dataRowHeight: 48,
+                      dataRowHeight: 50,
                       headingRowHeight: 40,
                       horizontalMargin: 12,
                       minWidth: 1500,
@@ -149,6 +152,12 @@ class _ReservationPageState extends State<ReservationPage> {
           DataCell(CustomText(
             text: _controller.reservationList[index].activity!,
           )),
+          DataCell(CustomText(
+            text: _controller.reservationList[index].startTime!,
+          )),
+          DataCell(CustomText(
+            text: _controller.reservationList[index].endTime!,
+          )),
           DataCell(
             Chip(
               visualDensity: VisualDensity.compact,
@@ -186,15 +195,17 @@ class _ReservationPageState extends State<ReservationPage> {
                     iconSize: 18,
                     splashRadius: 18,
                     onPressed: () {
-                      setState(() {
-                        _controller.reservationData =
-                            _controller.reservationList[index];
-                        log("[Rom:Res][reservationList]: $_controller.reservationList[index]");
-                        _controller.drawerIndex.value = 1;
-                      });
-                      if (_controller.drawerIndex.value == 1) {
-                        _scaffoldKey.currentState!.openEndDrawer();
-                      }
+                      // setState(() {
+                      //   _controller.reservationData =
+                      //       _controller.reservationList[index];
+                      //   //log("[Rom:Res][reservationList]: $_controller.reservationList[index]");
+                      //   _controller.drawerIndex.value = 1;
+                      // });
+                      CustomSnackBar.of(context)
+                          .customSnackBar('Akan di implementasi');
+                      // if (_controller.drawerIndex.value == 1) {
+                      //   _scaffoldKey.currentState!.openEndDrawer();
+                      // }
                     }),
                 IconButton(
                     tooltip: 'Delete',
@@ -203,13 +214,15 @@ class _ReservationPageState extends State<ReservationPage> {
                     iconSize: 18,
                     splashRadius: 18,
                     onPressed: () {
-                      setState(() {
-                        // _controller.roomData = _controller.roomList[index];
-                        // log("[Rom:Room][roomData]: $_controller.roomList[index]");
-                        // _controller.drawerIndex.value = 1;
-                        CustomSnackBar.of(context)
-                            .customSnackBar('Akan di implementasi');
-                      });
+                      CustomSnackBar.of(context)
+                          .customSnackBar('Akan di implementasi');
+                      // setState(() {
+                      //   // _controller.roomData = _controller.roomList[index];
+                      //   // log("[Rom:Room][roomData]: $_controller.roomList[index]");
+                      //   // _controller.drawerIndex.value = 1;
+                      //   CustomSnackBar.of(context)
+                      //       .customSnackBar('Akan di implementasi');
+                      // });
                       // if (_controller.drawerIndex.value == 1) {
                       //   _scaffoldKey.currentState!.openEndDrawer();
                       // }
@@ -239,7 +252,8 @@ class _ReservationPageState extends State<ReservationPage> {
 
   @override
   void initState() {
-    log("[Page:Res][_data]: $_controller.reservationList");
+    //log("[Page:Res][_data]: $_controller.reservationList");
+    _controller.getReservationListData();
     super.initState();
   }
 }

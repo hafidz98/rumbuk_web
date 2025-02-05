@@ -11,12 +11,12 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(
-        onPressed: () {
-          scaffoldKey.currentState!.openDrawer();
-        },
-        icon: const Icon(Icons.menu),
-      ),
+      // leading: IconButton(
+      //   onPressed: () {
+      //     scaffoldKey.currentState!.openDrawer();
+      //   },
+      //   icon: const Icon(Icons.menu),
+      // ),
       primary: true,
       elevation: 2,
       actions: [
@@ -30,7 +30,7 @@ class CustomAppBar extends StatelessWidget {
               border: Border.all(color: Colors.black.withValues(alpha: 0.2)),
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8.0),
+              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 20.0),
               child: Row(
                 children: [
                   CustomText(

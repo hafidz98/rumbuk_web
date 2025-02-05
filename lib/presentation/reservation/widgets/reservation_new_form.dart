@@ -6,14 +6,14 @@ import 'package:rumbuk_web/widgets/sidebars/custom_snackbar.dart';
 import 'package:rumbuk_web/constants/style.dart';
 import 'package:rumbuk_web/widgets/custom_text.dart';
 
-class FloorNewForm extends StatefulWidget {
-  const FloorNewForm({Key? key}) : super(key: key);
+class ReservationNewForm extends StatefulWidget {
+  const ReservationNewForm({Key? key}) : super(key: key);
 
   @override
-  State<FloorNewForm> createState() => _FloorNewFormState();
+  State<ReservationNewForm> createState() => _ReservationNewFormState();
 }
 
-class _FloorNewFormState extends State<FloorNewForm> {
+class _ReservationNewFormState extends State<ReservationNewForm> {
   final _controller = Get.put(ReservationController());
   final _formKey = GlobalKey<FormState>();
 

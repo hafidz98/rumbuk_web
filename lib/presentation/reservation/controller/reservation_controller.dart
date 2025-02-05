@@ -9,6 +9,7 @@ import 'package:rumbuk_web/presentation/reservation/model/reservation_responses.
 import 'package:rumbuk_web/presentation/reservation/service/reservation_service.dart';
 import 'package:rumbuk_web/presentation/reservation/widgets/reservation_edit_form.dart';
 import 'package:rumbuk_web/presentation/reservation/widgets/reservation_new_form.dart';
+import 'package:rumbuk_web/presentation/reservation/widgets/reservation_new_form2.dart';
 
 class ReservationController extends GetxController {
   final _floorService = ReservationService();
@@ -91,6 +92,7 @@ class ReservationController extends GetxController {
 
   @override
   void refresh() {
+    getReservationListData();
     //getFloorData();
   }
 
@@ -103,7 +105,7 @@ class ReservationController extends GetxController {
   Widget getDrawer() {
     switch (drawerIndex.value) {
       case 0:
-        return const FloorNewForm();
+        return const ReservationNewForm2();
       case 1:
         return const FloorEditForm();
       default:
