@@ -220,7 +220,8 @@ class _RoomPageState extends State<RoomPage> {
 
   @override
   void initState() {
-    log("[Page:Room][_data]: $_controller.roomList");
+    //log("[Page:Room][_data]: $_controller.roomList");
+    _controller.refresh();
     super.initState();
   }
 }

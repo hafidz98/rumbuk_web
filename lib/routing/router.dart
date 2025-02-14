@@ -23,8 +23,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(const Building2Page());
     case timeSlotPageRoute:
       return _getPageRoute(const TimeSlotPage());
-    case roomTimePageRoute:
-      return _getPageRoute(const RoomTimePage());
+    // case roomTimePageRoute:
+    //   return _getPageRoute(const RoomTimePage());
     case floorPageRoute:
       return _getPageRoute(const FloorPage());
     case reservationPageRoute:

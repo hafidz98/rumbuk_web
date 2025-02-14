@@ -3,12 +3,12 @@ import 'dart:developer';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rumbuk_web/presentation/room/controller/room_controller.dart';
+import 'package:rumbuk_web/presentation/room_time/controller/room_controller.dart';
 import 'package:rumbuk_web/widgets/sidebars/custom_snackbar.dart';
 
-import '../../constants/controllers.dart';
-import '../../constants/style.dart';
-import '../../widgets/custom_text.dart';
+import 'package:rumbuk_web/constants/controllers.dart';
+import 'package:rumbuk_web/constants/style.dart';
+import 'package:rumbuk_web/widgets/custom_text.dart';
 
 class RoomTimePage extends StatefulWidget {
   const RoomTimePage({Key? key}) : super(key: key);
@@ -17,8 +17,8 @@ class RoomTimePage extends StatefulWidget {
 
   static const List<DataColumn> _columns = [
     DataColumn2(label: Text("No"), fixedWidth: 40),
-    DataColumn2(label: Text("ID"), size: ColumnSize.S),
-    DataColumn2(label: Text("Nama"), size: ColumnSize.L),
+    DataColumn2(label: Text("ID Ruangan"), size: ColumnSize.S),
+    DataColumn2(label: Text("Ruang"), size: ColumnSize.L),
     DataColumn2(label: Text("Kapasitas"), size: ColumnSize.L),
     DataColumn2(label: Text("Aksi")),
   ];
@@ -33,6 +33,7 @@ class _RoomTimePageState extends State<RoomTimePage> {
     return Scaffold(
       key: _scaffoldKey,
       endDrawer: Drawer(
+        backgroundColor: Colors.white,
         child: _controller.getDrawer(),
       ),
       body: Padding(
