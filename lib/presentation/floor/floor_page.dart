@@ -16,9 +16,9 @@ class FloorPage extends StatefulWidget {
   static const List<DataColumn> _columns = [
     DataColumn2(label: Text("No"), fixedWidth: 40),
     DataColumn2(label: Text("ID Lantai"), size: ColumnSize.S),
-    DataColumn2(label: Text("Nama"), size: ColumnSize.L),
     DataColumn2(label: Text("Gedung"), size: ColumnSize.L),
-    DataColumn2(label: Text("Aksi")),
+    DataColumn2(label: Text("Lantai"), size: ColumnSize.L),
+    DataColumn2(label: Text("Aksi"),fixedWidth: 100,headingRowAlignment: MainAxisAlignment.center),
   ];
 }
 
@@ -105,13 +105,14 @@ class _FloorPageState extends State<FloorPage> {
             CustomText(text: _controller.floorList[index].id.toString()),
           ),
           DataCell(
-            CustomText(text: _controller.floorList[index].name.toString()),
-          ),
-          DataCell(
             CustomText(text: _controller.floorList[index].buildingName.toString()),
           ),
           DataCell(
+            CustomText(text: _controller.floorList[index].name.toString()),
+          ),
+          DataCell(
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
                     tooltip: 'Edit',
@@ -155,6 +156,7 @@ class _FloorPageState extends State<FloorPage> {
   @override
   void initState() {
     //log("[Page:Room][_data]: $_controller.roomList");
+    _controller.refresh();
     super.initState();
   }
 }

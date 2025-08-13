@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rumbuk_web/widgets/horizontal_menu_item.dart';
 import 'package:rumbuk_web/widgets/vertical_menu_item.dart';
-
-import '../helpers/responsiveness.dart';
+import 'package:rumbuk_web/helpers/responsiveness.dart';
 
 class SideMenuItem extends StatelessWidget {
   final String itemName;

@@ -3,12 +3,6 @@ const rootRoute = "/";
 const overViewPageName = "Overview";
 const overViewPageRoute = "/overview";
 
-// const driversPageName = "Drivers";
-// const driversPageRoute = "/drivers";
-//
-// const clientsPageName = "Clients";
-// const clientsPageRoute = "/clients";
-
 const buildingPageName = "Building";
 const buildingPageRoute = "/building";
 
