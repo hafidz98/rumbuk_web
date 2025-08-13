@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rumbuk_web/presentation/room/controller/room_controller.dart';
+import 'package:rumbuk_web/presentation/room_time/controller/room_controller.dart';
 
 import '../../../constants/style.dart';
 import '../../../widgets/custom_dropdownmenu2.dart';
@@ -80,19 +80,19 @@ class _RoomNewFormState extends State<RoomNewForm> {
                 weight: FontWeight.normal,
               ),
             ),
-            CustomDropdownButton2(
-              hint: const Text("Pilih Gedung"),
-              dropdownItems: _controller.getBuildingDropdownMenuItem(),
-              onChanged: (value) =>
-                  setState(() => _controller.buildingData = value),
-            ),
-            const SizedBox(height: 16),
-            CustomDropdownButton2(
-              hint: const Text("Pilih Lantai"),
-              dropdownItems: _controller.getBuildingDropdownMenuItem(),
-              onChanged: (value) =>
-                  setState(() => _controller.buildingData = value),
-            ),
+            // CustomDropdownButton2(
+            //   hint: const Text("Pilih Gedung"),
+            //   dropdownItems: _controller.getBuildingDropdownMenuItem(),
+            //   onChanged: (value) =>
+            //       setState(() => _controller.buildingData = value),
+            // ),
+            // const SizedBox(height: 16),
+            // CustomDropdownButton2(
+            //   hint: const Text("Pilih Lantai"),
+            //   dropdownItems: _controller.getBuildingDropdownMenuItem(),
+            //   onChanged: (value) =>
+            //       setState(() => _controller.buildingData = value),
+            // ),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

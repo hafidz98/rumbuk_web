@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rumbuk_web/presentation/room/controller/room_controller.dart';
+import 'package:rumbuk_web/presentation/room_time/controller/room_controller.dart';
 
 import '../../../constants/style.dart';
 import '../../../widgets/custom_text.dart';

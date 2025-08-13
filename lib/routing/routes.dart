@@ -3,12 +3,6 @@ const rootRoute = "/";
 const overViewPageName = "Overview";
 const overViewPageRoute = "/overview";
 
-// const driversPageName = "Drivers";
-// const driversPageRoute = "/drivers";
-//
-// const clientsPageName = "Clients";
-// const clientsPageRoute = "/clients";
-
 const buildingPageName = "Building";
 const buildingPageRoute = "/building";
 
@@ -48,5 +42,5 @@ List<MenuItem> sideMenuItems = [
   MenuItem(buildingPageName, buildingPageRoute),
   MenuItem(timeSlotPageName, timeSlotPageRoute),
   MenuItem(roomTimePageName, roomTimePageRoute),
-  MenuItem(staffPageName, timeSlotPageRoute),
+  MenuItem(staffPageName, staffPageRoute),
 ];

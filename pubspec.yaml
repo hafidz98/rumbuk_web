@@ -34,7 +34,7 @@ dependencies:
   google_fonts: ^5.1.0
   community_charts_flutter: ^1.0.1
   get: ^4.1.4
-  data_table_2: ^2.0.3
+  data_table_2: ^2.5.18
   freezed_annotation: ^2.4.1
   logger: ^2.0.2
   dio: ^5.3.2
@@ -42,6 +42,8 @@ dependencies:
   provider: ^6.0.5
   dropdown_button2: ^2.3.9
   flutter_multi_formatter: ^2.13.0
+  intl: ^0.20.2
+  easy_date_timeline: ^2.0.6
 
 
   # The following adds the Cupertino Icons font to your application.

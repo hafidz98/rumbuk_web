@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:rumbuk_web/data/network/client/api_client.dart';
 import 'package:rumbuk_web/data/network/mapper/network_mapper.dart';

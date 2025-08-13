@@ -1,10 +1,11 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:rumbuk_web/constants/strings.dart';
 import 'package:rumbuk_web/data/network/client/api_dio_client.dart';
 import 'package:rumbuk_web/data/network/entity/api_response_entity.dart';
 import 'package:rumbuk_web/data/network/entity/room_entity.dart';
-
-import '../../domain/exception/network_exception.dart';
+import 'package:rumbuk_web/domain/exception/network_exception.dart';
 
 class RoomRepository {
   late ApiDioClient apiDioClient = ApiDioClient();
@@ -22,8 +23,8 @@ class RoomRepository {
           message: response.statusMessage,
         );
       }
-
-      return ApiResponseEntity.fromJson(response.data as Map<String, dynamic>);
+      //return ApiResponseEntity.fromJson(response.data as Map<String, dynamic>);
+      return ApiResponseEntity.fromJson(jsonDecode(response.data));
     } on DioException catch (e){
       throw Exception(e);
     }

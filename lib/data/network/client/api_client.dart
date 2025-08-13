@@ -1,7 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:rumbuk_web/domain/exception/network_exception.dart';
-
-import '../entity/building_entity.dart';
 
 class ApiService {
   String baseUrl;

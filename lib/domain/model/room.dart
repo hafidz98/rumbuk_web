@@ -10,5 +10,6 @@ class Room with _$Room {
     required int capacity,
     int? buildingId,
     int? floorId,
+    String? status,
   }) = _Room;
 }

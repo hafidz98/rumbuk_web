@@ -12,14 +12,16 @@ part of 'building.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Building {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Building
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BuildingCopyWith<Building> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$BuildingCopyWithImpl<$Res, $Val extends Building>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Building
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -62,30 +66,33 @@ class _$BuildingCopyWithImpl<$Res, $Val extends Building>
 }
 
 /// @nodoc
-abstract class _$$_BuildingCopyWith<$Res> implements $BuildingCopyWith<$Res> {
-  factory _$$_BuildingCopyWith(
-          _$_Building value, $Res Function(_$_Building) then) =
-      __$$_BuildingCopyWithImpl<$Res>;
+abstract class _$$BuildingImplCopyWith<$Res>
+    implements $BuildingCopyWith<$Res> {
+  factory _$$BuildingImplCopyWith(
+          _$BuildingImpl value, $Res Function(_$BuildingImpl) then) =
+      __$$BuildingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String name});
 }
 
 /// @nodoc
-class __$$_BuildingCopyWithImpl<$Res>
-    extends _$BuildingCopyWithImpl<$Res, _$_Building>
-    implements _$$_BuildingCopyWith<$Res> {
-  __$$_BuildingCopyWithImpl(
-      _$_Building _value, $Res Function(_$_Building) _then)
+class __$$BuildingImplCopyWithImpl<$Res>
+    extends _$BuildingCopyWithImpl<$Res, _$BuildingImpl>
+    implements _$$BuildingImplCopyWith<$Res> {
+  __$$BuildingImplCopyWithImpl(
+      _$BuildingImpl _value, $Res Function(_$BuildingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Building
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? name = null,
   }) {
-    return _then(_$_Building(
+    return _then(_$BuildingImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -100,8 +107,8 @@ class __$$_BuildingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Building implements _Building {
-  const _$_Building({required this.id, required this.name});
+class _$BuildingImpl implements _Building {
+  const _$BuildingImpl({required this.id, required this.name});
 
   @override
   final String id;
@@ -114,10 +121,10 @@ class _$_Building implements _Building {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Building &&
+            other is _$BuildingImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -125,23 +132,28 @@ class _$_Building implements _Building {
   @override
   int get hashCode => Object.hash(runtimeType, id, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Building
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BuildingCopyWith<_$_Building> get copyWith =>
-      __$$_BuildingCopyWithImpl<_$_Building>(this, _$identity);
+  _$$BuildingImplCopyWith<_$BuildingImpl> get copyWith =>
+      __$$BuildingImplCopyWithImpl<_$BuildingImpl>(this, _$identity);
 }
 
 abstract class _Building implements Building {
   const factory _Building(
-      {required final String id, required final String name}) = _$_Building;
+      {required final String id, required final String name}) = _$BuildingImpl;
 
   @override
   String get id;
   @override
   String get name;
+
+  /// Create a copy of Building
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_BuildingCopyWith<_$_Building> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$BuildingImplCopyWith<_$BuildingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

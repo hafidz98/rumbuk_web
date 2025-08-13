@@ -36,7 +36,7 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
         child: _controller.getDrawer(),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(right: 16, left: 16, top: 16, bottom: 8),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             Obx(
@@ -75,7 +75,6 @@ class _TimeSlotPageState extends State<TimeSlotPage> {
                     borderRadius: const BorderRadius.all(Radius.circular(2)),
                   ),
                   padding: const EdgeInsets.all(8),
-                  margin: const EdgeInsets.only(bottom: 30),
                   child: SizedBox(
                     height: (56 * 7) + 40,
                     child: DataTable2(

@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:rumbuk_web/data/api_init.dart';
 import 'package:rumbuk_web/data/network/client/api_client.dart';
 import 'package:rumbuk_web/domain/exception/network_exception.dart';
-
-import '../entity/building_entity.dart';
+import 'package:rumbuk_web/data/network/entity/building_entity.dart';
 
 class BuildingService{
   late ApiService as;

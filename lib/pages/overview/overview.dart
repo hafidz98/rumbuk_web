@@ -59,84 +59,111 @@ class OverViewPage extends StatelessWidget {
         elevation: 16,
         child: FormFieldTable(),
       ),
-      body: Column(
-        children: [
-          Obx(
-            () => Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(
-                      top: ResponsiveWidget.isSmallScreen(context) ? 56 : 6),
-                  child: CustomText(
-                    text: menuController.activeItem.value,
-                    size: 24,
-                    weight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+      body: Padding(
+        padding: const EdgeInsets.only(right: 16, left: 16, top: 16, bottom: 8),
+        child: SizedBox.expand(
+          //height: MediaQuery.of(context).size.height,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Center(child: Text('Selamat datang')),
+              Obx(
+                () => Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(
+                          top: ResponsiveWidget.isSmallScreen(context) ? 56 : 6),
+                      child: CustomText(
+                        text: menuController.activeItem.value,
+                        size: 24,
+                        weight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                color: light,
+                alignment: Alignment.center,
+                child: const Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image(
+                      width: 400,
+                      fit: BoxFit.fitWidth,
+                      image: AssetImage('assets/images/dashboard_image.jpg'),
+                    ),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          'Selamat datang',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // Expanded(
+              //   child: ListView(
+              //     children: const [
+              //       Text('Selamat datang')
+              //       // if (ResponsiveWidget.isLargeScreen(context) ||
+              //       //     ResponsiveWidget.isMediumScreen(context))
+              //       //   if (ResponsiveWidget.isCustomScreen(context))
+              //       //     const OverviewCardMediumScreen()
+              //       //   else
+              //       //     const OverviewCardLargeScreen()
+              //       // else
+              //       //   const OverviewCardSmallScreen(),
+              //       // if (!ResponsiveWidget.isSmallScreen(context))
+              //       //   const RevenueSectionLarge()
+              //       // else
+              //       //   const RevenueSectionSmall(),
+              //       //AvailableDrivers()
+              //
+              //       // Row(
+              //       //   children: [
+              //       //     Expanded(
+              //       //       child: CustomText(
+              //       //         text: "Table Label",
+              //       //         color: active.withOpacity(.7),
+              //       //         weight: FontWeight.bold,
+              //       //       ),
+              //       //     ),
+              //       //     ElevatedButton.icon(
+              //       //       onPressed: () {
+              //       //         _scaffoldKey.currentState!.openEndDrawer();
+              //       //       },
+              //       //       label: const Text("New Data"),
+              //       //       icon: const Icon(
+              //       //         Icons.add,
+              //       //         size: 24,
+              //       //       ),
+              //       //       style: ElevatedButton.styleFrom(
+              //       //         minimumSize: const Size(60.0, 40.0),
+              //       //       ),
+              //       //     )
+              //       //   ],
+              //       // ),
+              //       // const SizedBox(
+              //       //   height: 18,
+              //       // ),
+              //       // AvailableDriversTable(
+              //       //   dataColumn: _columns,
+              //       //   dataRow: _row,
+              //       // )
+              //     ],
+              //   ),
+              // )
             ],
-          )),
-          // Expanded(
-          //   child: ListView(
-          //     children: const [
-          //       Text('Selamat datang')
-          //       // if (ResponsiveWidget.isLargeScreen(context) ||
-          //       //     ResponsiveWidget.isMediumScreen(context))
-          //       //   if (ResponsiveWidget.isCustomScreen(context))
-          //       //     const OverviewCardMediumScreen()
-          //       //   else
-          //       //     const OverviewCardLargeScreen()
-          //       // else
-          //       //   const OverviewCardSmallScreen(),
-          //       // if (!ResponsiveWidget.isSmallScreen(context))
-          //       //   const RevenueSectionLarge()
-          //       // else
-          //       //   const RevenueSectionSmall(),
-          //       //AvailableDrivers()
-          //
-          //       // Row(
-          //       //   children: [
-          //       //     Expanded(
-          //       //       child: CustomText(
-          //       //         text: "Table Label",
-          //       //         color: active.withOpacity(.7),
-          //       //         weight: FontWeight.bold,
-          //       //       ),
-          //       //     ),
-          //       //     ElevatedButton.icon(
-          //       //       onPressed: () {
-          //       //         _scaffoldKey.currentState!.openEndDrawer();
-          //       //       },
-          //       //       label: const Text("New Data"),
-          //       //       icon: const Icon(
-          //       //         Icons.add,
-          //       //         size: 24,
-          //       //       ),
-          //       //       style: ElevatedButton.styleFrom(
-          //       //         minimumSize: const Size(60.0, 40.0),
-          //       //       ),
-          //       //     )
-          //       //   ],
-          //       // ),
-          //       // const SizedBox(
-          //       //   height: 18,
-          //       // ),
-          //       // AvailableDriversTable(
-          //       //   dataColumn: _columns,
-          //       //   dataRow: _row,
-          //       // )
-          //     ],
-          //   ),
-          // )
-        ],
+          ),
+        ),
       ),
     );
   }
